@@ -8,5 +8,4 @@ public class MinhaConexao {
         ConexaoJDBC conexao = new ConexaoHBD();
         return conexao.criarConexao();
     }
-
 }

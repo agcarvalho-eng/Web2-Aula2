@@ -1,6 +1,6 @@
 package br.edu.ifto.aula02.controller;
 
-import br.edu.ifto.aula02.model.dao.PessoaDAO;
+import br.edu.ifto.aula02.model.dao.ProdutoDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("pessoa")
-public class PessoaController {
+@RequestMapping("produto")
+public class ProdutoController {
 
-    PessoaDAO dao;
+    ProdutoDAO dao;
 
-    public PessoaController(){
-        dao = new PessoaDAO();
+    public ProdutoController(){
+        dao = new ProdutoDAO();
     }
 
     @GetMapping("/list")
     public ModelAndView listar(ModelMap model) {
-        model.addAttribute("pessoas", dao.buscarPessoas());
-        return new ModelAndView("/pessoa/list");
+        model.addAttribute("produtos", dao.buscarProdutos());
+        return new ModelAndView("/produto/list");
     }
 
 }

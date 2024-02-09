@@ -12,19 +12,20 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PessoaDAO {
+public class ProdutoDAO {
 
     //criar um objeto Connection para receber a conexão
     Connection con;
 
-    public PessoaDAO(){
+    public ProdutoDAO(){
         con = MinhaConexao.conexao();
     }
 
-    public Produto buscarPessoa(int id) {
+    // Buscar produto pelo id.
+    public Produto buscarProduto(int id) {
         try {
             //comando sql
-            String sql = "select * from pessoa where id = ?";
+            String sql = "select * from produto where id = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             //referênciar o parâmetro do método para a ?
             ps.setInt(1, id);
@@ -33,36 +34,39 @@ public class PessoaDAO {
             if (rs.next()) {
                 Produto p = new Produto();
                 p.setId(rs.getInt("id"));
-                p.setNome(rs.getString("nome"));
+                p.setDescricao(rs.getString("descricao"));
+                p.setValor(rs.getDouble("valor"));
                 return p;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
 
-    public List<Produto> buscarPessoas() {
+    // Buscar todos os produtos cadastrados.
+    public List<Produto> buscarProdutos() {
         try {
             //comando sql
-            String sql = "select * from pessoa";
+            String sql = "select * from produto";
             PreparedStatement ps = con.prepareStatement(sql);
-            //ResultSet, representa o resultado do comando SQL
+            //ResultSet, representa o resultado do comando SQL.
             ResultSet rs = ps.executeQuery();
             //cria uma lista de pessoas para retornar
             List<Produto> produtos = new ArrayList();
-            //laço para buscar todas as pessoas do banco
+            //laço para buscar todas os produtos do banco.
             while (rs.next()) {
                 Produto p = new Produto();
                 p.setId(rs.getInt("id"));
-                p.setNome(rs.getString("nome"));
-                //add pessoa na lista
+                p.setDescricao(rs.getString("descricao"));
+                p.setValor(rs.getDouble("valor"));
+                //adicionar produto "p" na lista de produtos.
                 produtos.add(p);
             }
-            //retorna a lista de pessoas
+            //retorna a lista de produtos.
             return produtos;
         } catch (SQLException ex) {
-            Logger.getLogger(PessoaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

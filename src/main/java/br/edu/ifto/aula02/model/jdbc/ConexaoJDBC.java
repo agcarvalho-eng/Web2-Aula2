@@ -6,5 +6,4 @@ public interface ConexaoJDBC {
 
     public Connection criarConexao();
 
-
 }
