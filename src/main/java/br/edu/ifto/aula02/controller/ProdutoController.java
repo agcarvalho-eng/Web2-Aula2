@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("produtos")
+@RequestMapping("produto")
 public class ProdutoController {
 
     ProdutoDAO dao;
@@ -20,7 +20,7 @@ public class ProdutoController {
     @GetMapping("/list")
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("produtos", dao.buscarProdutos());
-        return new ModelAndView("/produtos/list");
+        return new ModelAndView("/produto/list"); //aponta o caminho da view no projeto em /templates/produto
     }
 
 }
