@@ -1,5 +1,7 @@
 package br.edu.ifto.aula02.model.entity;
-
+/*
+Programa para CRUD completo com entidade Produto.
+ */
 public class Produto {
 
     private int id;
