@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de produtos</title>
-</head>
-<body>
-
-<h1><b>Lista de produtos disponíveis.</b></h1>
-<br>
-<table class="table" border="1">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Descrição</th>
-        <th>Valor (R$)</th>
-        <th colspan="2">Operações</th>
-    </tr>
-    </thead>
-    <tr th:each="p : ${produtos}">
-        <td th:text="${p.id}"> </td>
-        <td th:text="${p.descricao}"></td>
-        <td th:text="${p.valor}"> </td>
-        <td> <a th:href="@{/produtos/edit/{id}(id=${p.id})}">Editar</a> </td>
-        <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/produtos/remove/{id}(id=${p.id})}">Excluir</a> </td>
-    </tr>
-</table>
-</body>
+<html xmls:th="http://www.thymeleaf.org" xmlns:xmls="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista de produtos</title>
+        <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+    </head>
+    <body>
+        <h1><b>Lista de produtos disponíveis.</b></h1>
+        <br>
+        <table class="table" border="1">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descrição</th>
+                <th>Valor (R$)</th>
+                <th colspan="2">Operações</th>
+            </tr>
+            </thead>
+            <tr th:each="p : ${produtos}">
+                <td th:text="${p.id}"> </td>
+                <td th:text="${p.descricao}"></td>
+                <td th:text="${p.valor}"> </td>
+                <td> <a th:href="@{/produtos/edit/{id}(id=${p.id})}">Editar</a> </td>
+                <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
+                        th:href="@{/produtos/remove/{id}(id=${p.id})}">Excluir</a> </td>
+            </tr>
+        </table>
+    </body>
 </html>
