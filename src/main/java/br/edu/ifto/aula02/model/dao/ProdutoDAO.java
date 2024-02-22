@@ -109,7 +109,7 @@ public class ProdutoDAO {
     public boolean update(Produto produto) {
         try {
             // Comando sql para atualizar um produto.
-            String sql = "update produto set descricao=? and valor=? where id=?";
+            String sql = "update produto set descricao=?, valor=? where id=?";
             PreparedStatement ps = con.prepareStatement(sql);
             // Referenciando os parâmetros do método para as "?".
             ps.setString(1, produto.getDescricao());

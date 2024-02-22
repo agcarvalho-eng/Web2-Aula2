@@ -9,7 +9,7 @@
     <body>
         <h1>"FORM" para salvar ou atualizar produtos.</h1>
         <br>
-        <form th:action="${produto.id == null} ? @{/produto/save} : @{/produto/update}"
+        <form th:action="${produto.id == 0} ? @{/produto/save} : @{/produto/update}"
               th:object="${produto}" method="post">
             <input type="hidden" th:field="*{id}">
             <input type="text" th:field="*{descricao}"  placeholder="Descrição">

@@ -48,7 +48,7 @@ public class ProdutoController {
     @GetMapping("/remove/{id}")
     public ModelAndView remove(@PathVariable("id") int id){
         dao.remove(id);
-        return new ModelAndView("redirect:/produto/list"); //Aponta o caminho da view no projeto em /templates/produto.
+        return new ModelAndView("redirect:/produto/list"); //Aponta o caminho da view no projeto em /templates/list.
     }
     /**
      * @param id
@@ -58,7 +58,7 @@ public class ProdutoController {
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") int id, ModelMap model) {
         model.addAttribute("produto", dao.buscarProduto(id));
-        return new ModelAndView("/produto/form", model);
+        return new ModelAndView("/produto/form", model); // Página onde está a estrutura html a ser mostrada (templates/form).
     }
 
     @PostMapping("/update")
