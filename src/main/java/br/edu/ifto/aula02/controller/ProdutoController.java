@@ -32,7 +32,7 @@ public class ProdutoController {
     @GetMapping("/list")
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("produtos", dao.buscarProdutos());
-        return new ModelAndView("/produto/list"); //Aponta o caminho da view no projeto em /templates/produto.
+        return new ModelAndView("/produto/list", model); //Aponta o caminho da view no projeto em /templates/produto.
     }
     @PostMapping("/save")
     public ModelAndView save(Produto produto) {
